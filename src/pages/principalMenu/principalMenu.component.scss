@@ -1,0 +1,15 @@
+.button-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.full-width-button {
+  height: 60px;
+  font-size: 1.2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  --border-radius: 12px;
+}

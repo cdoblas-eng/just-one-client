@@ -1,0 +1,6 @@
+export enum MenuOption {
+  CREATE_GAME = 'CREATE_GAME',
+  JOIN_GAME = 'JOIN_GAME',
+  OPTIONS = 'OPTIONS',
+  SUGGESTIONS = 'SUGGESTIONS'
+}

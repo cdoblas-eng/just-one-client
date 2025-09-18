@@ -1,0 +1,96 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="button-list">
+    <ion-button
+      *ngFor="let option of options"
+      class="full-width-button"
+      expand="block"
+      (click)="onOptionClick(option)">
+      {{ option | translate }}
+    </ion-button>
+  </div>
+
+  <ion-modal [isOpen]="isCreateGameModalOpen" (willDismiss)="onCreateModalDismiss()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ 'CREATE_GAME' | translate }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeCreateGameModal()">{{ 'CLOSE' | translate }}</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form #createGameForm="ngForm" (ngSubmit)="onCreateGame(createGameForm)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">{{ 'USERNAME' | translate }}</ion-label>
+                  <ion-input [(ngModel)]="username" name="username" type="text" required #usernameInput="ngModel"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" [disabled]="!createGameForm.valid" type="submit">
+                  {{ 'CREATE_GAME' | translate }}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Join Game Modal -->
+  <ion-modal [isOpen]="isJoinGameModalOpen" (willDismiss)="onJoinModalDismiss()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ 'JOIN_GAME' | translate }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeJoinGameModal()">{{ 'CLOSE' | translate }}</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form #joinGameForm="ngForm" (ngSubmit)="onJoinGame(joinGameForm)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">{{ 'USERNAME' | translate }}</ion-label>
+                  <ion-input [(ngModel)]="joinUsername" name="joinUsername" type="text" required #joinUsernameInput="ngModel"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">{{ 'GAME_ID' | translate }}</ion-label>
+                  <ion-input [(ngModel)]="gameId" name="gameId" type="text" required #gameIdInput="ngModel"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" [disabled]="!joinGameForm.valid" type="submit">
+                  {{ 'JOIN_GAME' | translate }}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
