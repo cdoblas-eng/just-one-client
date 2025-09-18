@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi App</ion-title>
+    <ion-buttons slot="end">
+      <ion-item>
+        <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between"
+        >Modo oscuro</ion-toggle
+        >
+      </ion-item>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
